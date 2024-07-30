@@ -16,6 +16,7 @@ from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.shortcuts import render
 
 class SongViewSet(viewsets.ModelViewSet):
     queryset = Song.objects.all()
@@ -67,3 +68,10 @@ class UserRegistrationView(generics.CreateAPIView):
 class CustomTokenObtainPairView(TokenObtainPairView):
     # You can customize the token response here if needed
     pass
+def index(request):
+    
+    return render(request, 'index.html')
+
+def manifest(request):
+    return render(request, 'manifest.json', content_type='application/json')
+    
